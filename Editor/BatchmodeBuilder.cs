@@ -16,7 +16,7 @@ public class BatchmodeBuilder
    private const string WEBGL_BUILD_MENU = BUILD_MENU + "WebGL";
    private const string STANDALONE_BUILD_MENU = BUILD_MENU + "Standalone";
    private const string UWP_BUILD_MENU = BUILD_MENU + "UWP";
-   private const string TEMPLATE_MENU = MENU_BASE_STRING + "Generate/Tempalte";
+   private const string TEMPLATE_MENU = MENU_BASE_STRING + "Generate/Template";
    private const string HELP_MENU = MENU_BASE_STRING + "Help";
    //config names
    private const string TEMPLATE_CONFIG_FILE_NAME = "template.json";
