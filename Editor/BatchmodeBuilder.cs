@@ -161,7 +161,7 @@ public class BatchmodeBuilder
       buildOptions.scenes = GetActiveScenes();
       buildOptions.target = config.GetBuildTarget();
 
-      if (config.buildNumber != "")
+      if (config.buildNumber != "" && config.buildNumber != null)
       {
          //Platform specific options
          if (config.GetBuildTarget() == BuildTarget.iOS)
@@ -175,7 +175,11 @@ public class BatchmodeBuilder
          }
       }
 
-      PlayerSettings.bundleVersion = config.bundleVersion;
+      if (config.bundleVersion != "" && config.bundleVersion != null)
+      {
+         PlayerSettings.bundleVersion = config.bundleVersion;
+      }
+
       PlayerSettings.SetApplicationIdentifier(buildOptions.targetGroup, config.bundleId);
 
       return buildOptions;
@@ -229,10 +233,10 @@ public class BatchmodeBuilder
       BuildPlatformFromConfig(UWP_CONFIG_FILE_NAME);
    }
 
-   //Get the config file location 
+   //Get the config file location (Assets/Editor/config.json)
    private static string GetConfigurationPathForPlatform(string platformFileName = TEMPLATE_CONFIG_FILE_NAME)
    {
-      return Path.Combine(Application.dataPath, platformFileName);
+      return Path.Combine(Application.dataPath, "Editor", platformFileName);
    }
 
    //Read config from config file
@@ -260,7 +264,7 @@ public class BuildConfiguration
    public string logOutputDir;
    public string buildTarget;
 
-   public BuildConfiguration(string productName, string companyName, string bundleId, string bundleVersion, string buildNumber, string buildTarget, string customMethod, string buildOutput, string logOutputDir)
+   public BuildConfiguration(string productName, string companyName, string bundleId, string buildTarget, string buildOutput, string customMethod = "", string logOutputDir = "", string bundleVersion = "", string buildNumber = "")
    {
 
       this.productName = productName;
