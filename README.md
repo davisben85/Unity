@@ -4,7 +4,7 @@ To use:
 
 * Add the BatchmodeBuilder.cs to an Editor directory in your project. 
 * Generate a template via the BeMyTest > Generate > Template menu.
-* The template.json will be added to your Assets dir.
+* The template.json will be added to your Assets/Editor dir.
 * Copy/paste this file for each platform you wish to build for, and change the name to match the following pattern: *platform*_build.json (ios_build.json)
   
  Example: 
