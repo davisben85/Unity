@@ -163,21 +163,23 @@ public class BatchmodeBuilder
 
       if (config.buildNumber != "" && config.buildNumber != null)
       {
+         var buildNumber = Environment.GetEnvironmentVariable(config.buildNumber) ?? config.buildNumber;
          //Platform specific options
          if (config.GetBuildTarget() == BuildTarget.iOS)
          {
-            PlayerSettings.iOS.buildNumber = config.buildNumber;
+            PlayerSettings.iOS.buildNumber = buildNumber;
          }
 
          if (config.GetBuildTarget() == BuildTarget.Android)
          {
-            PlayerSettings.Android.bundleVersionCode = Int32.Parse(config.buildNumber);
+            PlayerSettings.Android.bundleVersionCode = Int32.Parse(buildNumber);
          }
       }
 
       if (config.bundleVersion != "" && config.bundleVersion != null)
       {
-         PlayerSettings.bundleVersion = config.bundleVersion;
+         var bundleVersion = Environment.GetEnvironmentVariable(config.bundleVersion) ?? config.bundleVersion;
+         PlayerSettings.bundleVersion = bundleVersion;
       }
       //config.bundleId can be set to an env var, and that should work too... bundleId = "BUNDLE_ID"
       var bundleId = Environment.GetEnvironmentVariable(config.bundleId) ?? config.bundleId;
