@@ -48,7 +48,7 @@ public class BatchmodeBuilder
       EditorUtility.RevealInFinder(configFile);
    }
 
-
+   
    [MenuItem(HELP_MENU)]
    //Logs some info about what the supported values are
    //TODO: Add some real validation vs relying on failures
@@ -179,8 +179,10 @@ public class BatchmodeBuilder
       {
          PlayerSettings.bundleVersion = config.bundleVersion;
       }
+      //config.bundleId can be set to an env var, and that should work too... bundleId = "BUNDLE_ID"
+      var bundleId = Environment.GetEnvironmentVariable(config.bundleId) ?? config.bundleId;
 
-      PlayerSettings.SetApplicationIdentifier(buildOptions.targetGroup, config.bundleId);
+      PlayerSettings.SetApplicationIdentifier(buildOptions.targetGroup, bundleId);
 
       return buildOptions;
    }
