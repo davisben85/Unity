@@ -27,3 +27,6 @@ To use:
   
   Note: customMethod is _not_ used from this config
   
+* buildNumber is optional
+* buildVersion is optional
+* bundleId, buildNumber, and bundleVersion will try to resolve as an environment variable, and fall back to the literal string if it is not set.  This is to support different bundleId, buildNumber, and bundleVersions at build time, instead of having to create several files.
