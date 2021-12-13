@@ -161,15 +161,18 @@ public class BatchmodeBuilder
       buildOptions.scenes = GetActiveScenes();
       buildOptions.target = config.GetBuildTarget();
 
-      //Platform specific options
-      if (config.GetBuildTarget() == BuildTarget.iOS)
+      if (config.buildNumber != "")
       {
-         PlayerSettings.iOS.buildNumber = config.buildNumber;
-      }
+         //Platform specific options
+         if (config.GetBuildTarget() == BuildTarget.iOS)
+         {
+            PlayerSettings.iOS.buildNumber = config.buildNumber;
+         }
 
-      if (config.GetBuildTarget() == BuildTarget.Android)
-      {
-         PlayerSettings.Android.bundleVersionCode = Int32.Parse(config.buildNumber);
+         if (config.GetBuildTarget() == BuildTarget.Android)
+         {
+            PlayerSettings.Android.bundleVersionCode = Int32.Parse(config.buildNumber);
+         }
       }
 
       PlayerSettings.bundleVersion = config.bundleVersion;
